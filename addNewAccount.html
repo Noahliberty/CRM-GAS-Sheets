@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <?!= include("newAccount-css");  ?>
+     
+  </head>
+  
+  <body>   
+    <a href="link">GO BACK</a>
+    <div class="container">
+      <div class="header">   
+        <img src="image"
+             alt="image">
+        <h1>NEW BRAND</h1>
+      </div>
+      <div id="content">
+        <form onsubmit="handleNewAccountFormSubmit(this);" >
+          <div>
+            <label class="underline" for="newBrand">Brand Name</label>
+            <input id="brandName" name="newBrand" type="text" placeholder="Brand Name" required>
+            <hr>
+          </div>
+
+        <!--  <div>
+            <label class="underline" for="country">Country</label>
+            <select id="country" name="country" id="" onchange="" required>
+              <option value="" disabled selected>Select Country</option>
+              <option value="US">US</option>
+            </select>
+
+            <label class="underline" for="state">State/Province</label>
+            <input id="state" name="state" type="text" placeholder="State or province">
+            <label class="underline" for="city">City</label>
+            <input id="city" name="city" type="text" placeholder="City">
+            <hr>
+          </div> -->
+         
+          <div>
+            <label class="underline" for="locations">Number of Locations</label>
+            <input id="locations" name="locations" type="number" step="1" min="1" value="1" required>
+          </div>
+
+          <div>
+            <label class="underline" for="businessType">Brand Source</label>
+            <select name="businessType" id="businessTypeSelect" onchange="businessOtherDisplay(this.value);">
+              <option value="" disabled selected>Select Brand Source</option>
+              <option value="zd">zd</option>
+              <option value="Brands">Brands</option>
+       
+       <!--   <option value="" disabled selected>Select Business Type</option>
+              <option value="americanDiner">American Diner</option>
+              <option value="pizzaParlor">Pizza Parlor</option>
+              <option value="coffeeShop">Coffee Shop</option>
+              <option value="candyShop">Candy Store</option>
+              <option value="iceCreamParlor">Ice Cream Parlor</option>
+              <option value="burgerShop">Burger Shop</option>
+              <option value="otherNon_AmericanDiner">Other non-American Diner (Foreign servings)</option>
+              <option value="other">Other (not listed above)</option> -->
+            </select>
+          </div>
+
+          <div id="businessTypeDisplay">
+            <label class="underline" for="businessTypeOther">Business Type Other</label>
+            <input name="businessTypeOther" type="text" placeholder="Business type if not listed above">
+          </div>
+
+          <div>
+            <label class="underline" for="integration">Integration</label>
+            <select name="integration" required>
+              <option value="" disabled selected>Select Integration</option>
+              <option value="square">Square</option>
+              <option value="clover">Clover</option>
+              <option value="cloverPilot">Clover Pilot</option>
+              <option value="stripe">Stripe</option>
+              <option value="gPay">GPAY</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+         
+     <!-- <div> 
+            <label class="underline" for="complexity">Complexity Rating</label>
+            <select name="complexity">
+              <option value="" disabled selected>Select Complexity</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>            
+            </select>
+          </div>
+         
+          <div>
+            <label class="underline" for="priority">Priority</label>
+            <select name="priority">
+              <option value="" disabled selected>Select Priority</option>
+              <option value="P0">P0</option>
+              <option value="P1">P1</option>
+              <option value="P2">P2</option>
+              <option value="P3">P3</option>
+              <option value="P4">P4</option>            
+            </select>
+          </div>   -->      
+        
+          <div>
+            <label class="underline" for="menuSource">File Attachment/Source</label>
+            <textarea name="menuSource" cols="40" rows="5" placeholder="Path to menu" required></textarea>
+            <hr>
+          </div>
+
+    <!--  <div>
+            <p class="underline">Do you need an item hidden/disabled?</p>
+            <input class="inline" name="disableItemOption" type="radio" value="yes" onclick="showItem()">
+            <label class="inline" for="yes">Yes</label>
+            <input class="inline" name="disableItemOption" type="radio" value="no" checked onclick="hideItem()">
+            <label class="inline" for="no">No</label>
+          </div>
+
+          <div id="itemDisplay">
+            <div class="instructions">
+              <h2 class="underline">Instructions</h2>
+              <h4 class="underline">Enter item names in folllowing format:</h4>
+              <p>Category > Item Name</p>
+              <h3>Enter next item(s) in a new line</h3>
+            </div>
+            <label class="underline" for="itemDisable">Which item(s) should be disabled?</label>
+            <textarea id="disabledItem" name="itemDisable" cols="40" rows="5"></textarea>
+          </div>
+
+       <div>
+         <p class="underline">Do you need a modifier hidden/disabled?</p>
+         <input class="inline" name="disableModOption" type="radio" value="yes" onclick="showMod()">
+         <label class="inline" for="yes">Yes</label>
+         <input class="inline" name="disableModOption" type="radio" value="no" checked onclick="hideMod()">
+         <label class="inline" for="no">No</label>
+       </div>
+
+       <div id="modDisplay">
+         <div class="instructions">
+           <h2 class="underline">Instructions</h2>
+
+           <h4 class="underline">To disable a parent modifier under select item(s):</h4>
+           <p>Category > Item Name > Parent Modifier Name</p>
+           <h4 class="underline">To disable select modifiers under select item(s):</h4>
+           <p>Category > Item Name > Parent Modifier Name > Child modifier Name</p>
+           <h4 class="underline">To disable all modifiers under select item(s):</h4>
+           <p>Category > Item Name > All modifiers</p>
+           <h4 class="underline">To disable an entire set of modifier(s):</h4>
+           <p>Disable > Parent modifier Name</p>
+
+           <h3>Enter next item(s) in a new line:</h3>
+         </div>
+         <label class="underline" for="modDisable">Which modifier(s) should be disbaled?</label>
+         <textarea id="disabledMod" name="modDisable" cols="40" rows="5"></textarea>
+       </div>
+
+       <div>
+         <p class="underline">Do you need to update a price?</p>
+         <input class="inline" name="updatePrice" type="radio" value="yes" onclick="showPrice()">
+         <label class="inline" for="yes">Yes</label>
+
+         <input class="inline" name="updatePrice" type="radio" value="no" checked onclick="hidePrice()">
+         <label class="inline" for="no">No</label>
+       </div>
+
+       <div id="priceDisplay">
+         <div class="instructions">
+           <h2 class="underline">Instructions</h2>
+           <h4 class="underline">For price updates:</h4>
+           <p>Category > Item Name > New Price</p>
+           <h4 class="underline">For modifiers of select item(s):</h4>
+           <p>Category > Item Name > Parent Modifier Name > Child Modifier Name > New Price</p>
+           <h4 class="underline">For a general modifier price change:</h4>
+           <p>Modifier > Parent Modifier > Child modifier name > New Price</p>
+           <h3>Enter next item(s) in a new line</h3>
+         </div>
+         <label class="underline" for="priceUpdate">Which item/modifier needs a price update?</label>
+         <textarea id="updatedPrice" name="priceUpdate" cols="40" rows="5"></textarea>
+       </div>
+       
+       <div>
+       <hr>
+         <p class="underline">Does this brand need sales tax added?</p>
+         <input class="inline" name="tax" type="radio" value="yes" checked>
+         <label class="inline" for="yes">Yes</label>
+         <input class="inline" name="tax" type="radio" value="no">
+         <label class="inline" for="no">No</label>
+       </div>
+       
+       <div>
+         <label class="underline" for="hours">Hours of operations</label>
+         <textarea name="hours" cols="40" rows="5" placeholder="Please enter hours of operation for all locations"></textarea>         
+       </div>
+
+
+       <div>
+         <hr>
+         <label class="underline" for="otherUpdates">Any other information needed on the menu?</label>
+         <textarea name="otherUpdates" cols="40" rows="5" placeholder="List other instructions here"></textarea>
+       </div> -->
+
+       <div id="lastInput">
+         <label class="underline" for="specialInstructions">Are there special instructions/notes for this brand?</label>
+         <textarea name="specialInstructions" cols="40" rows="5"
+           placeholder="List special instructions here"></textarea>
+       </div>
+       <div>
+         <input id="submitButton" type="submit" value="Submit">                
+       </div>
+       <div id="loading"><div></div><div></div><div></div><div></div></div>  
+     </form>
+     </div>
+     <div id="output"></div>
+   </div>
+   <?!= include("newAccount-js");  ?>
+ </body>
+</html>
+
+
+
+
+
