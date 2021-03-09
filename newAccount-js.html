@@ -26,14 +26,14 @@ function onSuccess(brand){
         document.getElementById("content").style.display = "none";
         var output = document.getElementById("output"); 
         output.innerHTML = '<div class="header"><h2>Success!!</h2><p>'+ brand + ' has been added as a new brand!</p><p>Thanks!</p>'
-        + '<a href="https://script.google.com/a/macros/google.com/s/AKfycbzhW6mIhZwvIin1RfRI2Oe7ENEowdZuPDxM-278FmN0/dev?v=newAccountForm">Add Another Brand</a></div>'
+        + '<a href="link">Add Another Brand</a></div>'
 }
 
 function onFail(e) {
 document.getElementById("content").style.display = "none";
         var output = document.getElementById("output"); 
         output.innerHTML = '<div class="header"><h2>Error!!</h2><p>'+ e + '</p><p> Please check the information entered and try again in 30 secs</p><p>Thanks!</p>'
-        + '<a href="https://script.google.com/a/macros/google.com/s/AKfycbzhW6mIhZwvIin1RfRI2Oe7ENEowdZuPDxM-278FmN0/dev?v=newAccountForm">Try Again</a></div>'
+        + '<a href="link">Try Again</a></div>'
 }
 
 
