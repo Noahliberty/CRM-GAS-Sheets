@@ -1,0 +1,81 @@
+<script>
+ function preventFormSubmit() {
+        var forms = document.querySelectorAll('form');
+        for (var i = 0; i < forms.length; i++) {
+          forms[i].addEventListener('submit', function(event) {
+            event.preventDefault();
+          });
+        }
+      }
+      window.addEventListener('load', preventFormSubmit);
+
+
+function handleNewAccountFormSubmit(formObject) {  
+    const submitButton = document.getElementById("submitButton");
+    submitButton.disabled = 'true';
+    submitButton.value = "Loading...Please Wait"
+    document.getElementById("loading").classList.add("lds-ellipsis");
+      
+      google.script.run
+    .withFailureHandler(onFail)
+        .withSuccessHandler(onSuccess)
+        .processNewAccountForm(formObject);
+}
+
+function onSuccess(brand){        
+        document.getElementById("content").style.display = "none";
+        var output = document.getElementById("output"); 
+        output.innerHTML = '<div class="header"><h2>Success!!</h2><p>'+ brand + ' has been added as a new brand!</p><p>Thanks!</p>'
+        + '<a href="https://script.google.com/a/macros/google.com/s/AKfycbzhW6mIhZwvIin1RfRI2Oe7ENEowdZuPDxM-278FmN0/dev?v=newAccountForm">Add Another Brand</a></div>'
+}
+
+function onFail(e) {
+document.getElementById("content").style.display = "none";
+        var output = document.getElementById("output"); 
+        output.innerHTML = '<div class="header"><h2>Error!!</h2><p>'+ e + '</p><p> Please check the information entered and try again in 30 secs</p><p>Thanks!</p>'
+        + '<a href="https://script.google.com/a/macros/google.com/s/AKfycbzhW6mIhZwvIin1RfRI2Oe7ENEowdZuPDxM-278FmN0/dev?v=newAccountForm">Try Again</a></div>'
+}
+
+
+function disableSubmit() {
+  document.getElementById("submitButton").disabled = true;
+  document.getElementById("submitButton").value = "Sending...";
+}
+
+function showItem() {
+  document.getElementById("itemDisplay").style.display = "block";
+  document.getElementById("disabledItem").required = true;
+}
+function hideItem() {
+  document.getElementById("itemDisplay").style.display = "none";
+  document.getElementById("disabledItem").required = false;
+}
+function showMod() {
+  document.getElementById("modDisplay").style.display = "block";
+  document.getElementById("disabledMod").required = true;
+}
+function hideMod() {
+  document.getElementById("modDisplay").style.display = "none";
+  document.getElementById("disabledMod").required = false;
+}
+
+function showPrice() {
+  document.getElementById("priceDisplay").style.display = "block";
+  document.getElementById("updatedPrice").required = true;
+}
+function hidePrice() {
+  document.getElementById("priceDisplay").style.display = "none";
+  document.getElementById("updatedPrice").required = false;
+}
+
+function businessOtherDisplay(value) {
+  if (value === "other") {
+    document.getElementById("businessTypeDisplay").style.display = "block";
+  } else {
+    document.getElementById("businessTypeDisplay").style.display = "none";
+  }
+}
+
+
+
+    </script>
