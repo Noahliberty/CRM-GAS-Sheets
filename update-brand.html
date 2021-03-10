@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+   <?!= include("updateBrand-css");  ?>
+  </head>
+  
+  <body>
+  <a href="link">GO BACK</a>
+    <div class="container">
+      <div class="header" >
+        <img src="image.png"
+       alt="altimage.png">
+        
+        <h1>UPDATE BRAND</h1>
+      </div>
+    <div id="content">
+      <form id="myForm" onsubmit="handleUpdateBrandFormSubmit(this)">     
+        <div>
+          <label for="index">Please Enter Index You Would Like to Update:</label>
+          <input id="index" name="index" type="number" placeholder="Index Reference" required>
+        </div>
+        <input id="brandButton" type="button" value="Get Brand" onsubmit="">
+        <div>
+          <label for="index">Brand - Please confirm this is correct brand</label>
+          <input id="brandOutput" name="brandOutput" type="text" placeholder="Enter your Index above to confirm sure you have the correct brand" disabled>
+        </div>
+
+        <div>
+          <div>
+          <label for="requestReason">Request reason:</label>
+          <select name="requestReason" id=""  onchange="qaApproved(this.value); showAss(this.value);" required>  
+            <option value="" disabled selected>Select Request Reason</option>      
+       <!-- <option value="wflAccept">WFL - Accept</option>
+            <option value="wflAssign">WFL - Assign</option> -->
+            <option value="repAccept">Rep - Accept</option>       
+            <option value="infoRequired">Rep - Additional info required</option>
+            <option value="workResume">Rep - Resume Work</option>
+            <option value="sendQA">Rep - Send to QA</option> 
+            <option value="resendQA">Rep - Resend to QA (for Rework)</option>     
+            <option value="QAaccept">QA - Accept</option>
+            <option value="QAAutoApprove">QA - Auto Approval</option>
+            <option value="appovedQA">QA - Approved</option>
+            <option value="rejectedQA">QA - Rejection</option>
+       <!-- <option value="onboarderCorrections">Onboarder - Errors/Corrections</option>
+            <option value="clientAdjustment">Onboarder - Client Menu Adjustments</option>
+            <option value="currationComplete">Onboarder - Curration Complete</option>  -->          
+            <option value="systemIssues">Rep - System Issues</option> 
+            <option value="systemIssuesResume">Rep - System Issues Resume</option> 
+            <option value="noMenuSource">Rep - No Menu Source</option>
+            <option value="badFit">Rep - Bad Fit</option>       
+          </select>
+          </div>
+          
+          <div id="qaScore">
+            <label for="qaScore">What is the QA score for this brand?</label>
+            <input id="qaInput" name="qaScore" type="number" step="0.10" min="0" max="100" placeholder="QA Score">
+          </div>
+          
+           <div id="assignTo">
+            <label for="assignTo">Who do you want to assign this brand to?</label>
+            <select id="input" name="assignTo">
+            <option value="" disabled selected>Select Request Reason</option>            
+             <?!= repList; ?>           
+            </select>            
+          </div>
+          
+        </div>
+      
+        <div>
+          <label for="instructions">Instructions regarding request:</label>
+          <textarea name="instructions" cols="40" rows="5" type="text" placeholder="Type instructions if required here"></textarea>
+        </div>
+
+        <input id="submitButton" type="submit" value="Submit" onsubmit="handleUpdateBrandFormSubmit(this)">
+        <div id="loading"><div></div><div></div><div></div><div></div></div>
+      </form>
+  
+    </div>  
+    
+    <div id="output"></div>
+    
+    
+    <?!= include("updateBrand-js");  ?>
+    </div>
+  </body>
+</html>
+
+
