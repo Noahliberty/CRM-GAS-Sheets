@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+   <?!= include("goLive-css");  ?>
+  </head>
+  
+  <body>
+  <a href="link">GO BACK</a>
+    <div class="container">
+      <div class="header" >
+        <img src="image.png"
+       alt="image.png">
+        
+        <h1>Go Live</h1>
+      </div>
+    <div id="content">
+      <form id="myForm" onsubmit="handleUpdateBrandFormSubmit(this)">     
+        <div>
+          <label for="index">Please Enter Index You Would Like to Take Live:</label>
+          <input id="index" name="index" type="number" placeholder="Index Reference" required>
+        </div>
+        <input id="brandButton" type="button" value="Get Brand" onsubmit="">
+        <div>
+          <label for="index">Brand - Please confirm this is correct brand</label>
+          <input id="brandOutput" name="brandOutput" type="text" placeholder="Enter your Index above to confirm sure you have the correct brand" disabled>
+        </div>
+
+              
+        <div>
+          <label for="instructions">Any additional comments?</label>
+          <textarea name="instructions" cols="40" rows="5" type="text" placeholder="Type comments here if required"></textarea>
+        </div>
+
+        <input id="submitButton" type="submit" value="Go Live" onsubmit="handleUpdateBrandFormSubmit(this)">
+        <div id="loading"><div></div><div></div><div></div><div></div></div>
+      </form>
+  
+    </div>  
+    
+    <div id="output"></div>
+    
+    
+    <?!= include("goLive-js");  ?>
+    </div>
+  </body>
+</html>
+
+
+
+
