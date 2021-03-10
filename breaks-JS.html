@@ -1,0 +1,63 @@
+<script>
+ 
+ function preventFormSubmit() {
+   var forms = document.querySelectorAll('form');
+   for (var i = 0; i < forms.length; i++) {
+       forms[i].addEventListener('submit', function(event) {
+       event.preventDefault();
+          });
+       }
+  }
+  window.addEventListener('load', preventFormSubmit);
+  document.getElementById("brandButton").addEventListener("click", getBrand);
+      
+  function handleBreaksFormSubmit(formObject) {
+    const submitButton = document.getElementById("submitButton");
+    submitButton.disabled = 'true';
+    submitButton.value = "Loading...Please Wait";
+    document.getElementById("loading").classList.add("lds-ellipsis");
+    
+    google.script.run
+       .withFailureHandler(onFail)
+        .withSuccessHandler(onSuccess)         
+        .processBreakForm(formObject);
+}
+
+function onSuccess(brand){        
+        document.getElementById("content").style.display = "none";
+        var output = document.getElementById("output");          
+        output.innerHTML = '<div class="header"><h2>Success!!</h2><p>A timestamp has been added for the brand ' + brand + '</p><p>Thanks!</p>'
+        + '<a href="link">Create another timestamp</a></div>'
+}
+
+function onFail(e) {
+document.getElementById("content").style.display = "none";
+        var output = document.getElementById("output"); 
+        output.innerHTML = '<div class="header"><h2>Error!!</h2><p>'+ e + '</p><p> Please check the information entered and try again in 30 secs</p><p>Thanks!</p>'
+        + '<a href="link">Try Again</a></div>'
+}
+
+function getBrand() {
+//  get value from index
+document.getElementById("brandOutput").value = "Loading..."
+
+let index = document.getElementById("index").value;
+google.script.run.withSuccessHandler(updateBrand).matchBrand(index); 
+}
+
+function updateBrand(brand) {
+document.getElementById("brandOutput").value = brand
+}
+
+function otherReason(value) {
+  if (value === "other") {
+    document.getElementById("other").style.display = "block";
+    document.getElementById("other").required = true;
+  } else {
+    document.getElementById("other").style.display = "none";
+    document.getElementById("other").required = false;
+  }
+}
+
+</script>
+
