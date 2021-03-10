@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <?!= include("home-css");  ?>
+  </head>
+  <body>
+  <div class="container">
+    <div class="header">
+     <img src="image.png"
+       alt="altimage.png">
+    <h1>Welcome xxxxx</h1>
+    <hr>
+     
+    <a href="https://script.google.com/a/macros/google.com/s/xxx-278FmN0/dev?v=newAccountForm">Add New Brand</a> 
+    <a href="https://script.google.com/a/macros/google.com/s/xxx-278FmN0/dev?v=updateBrandForm">Update Exisiting Brand</a>
+    <a href="https://script.google.com/a/macros/google.com/s/xxx-278FmN0/dev?v=goLive">Take A Brand Live</a> 
+    <a href="https://script.google.com/a/macros/google.com/s/xxx-278FmN0/dev?v=additionalEdits">Additional Edits</a> 
+    <hr>
+    <a href="https://script.google.com/a/macros/google.com/s/xxx-278FmN0/dev?v=breaks">Breaks/Out of Office</a> 
+    <hr>
+    <a href="<?= ScriptApp.getService().getUrl(); ?>?v=reports">Analytics / Reports</a> 
+
+  <!--  ScriptApp not working due to permisisons with WFH & remote
+  <a href="<?= ScriptApp.getService().getUrl(); ?>?v=newAccountForm">Add New Brand</a> 
+    <a href="<?= ScriptApp.getService().getUrl(); ?>?v=updateBrandForm">Update Exisiting Brand</a> 
+    <a href="<?= ScriptApp.getService().getUrl(); ?>?v=reports">Analytics / Reports</a> -->
+    </div>
+    </div>
+    
+  </body>
+</html>
+
+
