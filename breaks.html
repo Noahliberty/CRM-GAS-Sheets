@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+   <?!= include("breaks-css");  ?>
+  </head>
+  
+  <body>
+  <a href="link">GO BACK</a>
+    <div class="container">
+      <div class="header" >
+        <img src="image.png"
+       alt="image.png">
+        
+        <h1>Breaks and Out of Office</h1>
+      </div>
+    <div id="content">
+      <form id="myForm" onsubmit="handleBreaksFormSubmit(this)">     
+        <div>
+          <label for="index">Please Enter Index You Would Like to Update:</label>
+          <input id="index" name="index" type="number" placeholder="Index Reference" required>
+        </div>
+        <input id="brandButton" type="button" value="Get Brand" onsubmit="">
+        <div>
+          <label for="index">Brand - Please confirm this is correct brand</label>
+          <input id="brandOutput" name="brandOutput" type="text" placeholder="Enter your Index above to confirm sure you have the correct brand" disabled>
+        </div>
+
+        <div>
+          <label for="timeReason">Reason to pause/resume brand?</label>
+          <select name="timeReason" id=""  onchange="otherReason(this.value);" required>  
+            <option value="" disabled selected>Select Request Reason</option>      
+            <option value="breakS">Break - Start</option>
+            <option value="breakE">Break - End</option>
+            <option value="lunchS">Lunch - Start</option>       
+            <option value="lunchE">Lunch - End</option>
+            <option value="workdayS">Working day - Start</option>
+            <option value="workdayE">Working day - End</option>     
+            <option value="coachS">Coaching - Start</option>
+            <option value="coachE">Coaching - End</option>
+            <option value="trainS">Training - Start</option>
+            <option value="trainE">Training - End</option>
+            <option value="teamMeetS">Team Meeting - Start</option>
+            <option value="teamMeetE">Team Meeting - End</option>
+            <option value="other">Other</option>        
+          </select>
+         
+          <div id="other">
+            <label for="other">If other, what is the reason?</label>
+            <input name="other" type="text" placeholder="Please list 'other' reason">
+          </div>          
+        </div>
+        
+        <input id="submitButton" type="submit" value="Submit" onsubmit="handleUpdateBrandFormSubmit(this)">
+        <div id="loading"><div></div><div></div><div></div><div></div></div>
+      </form>     
+    </div>  
+    
+    <div id="output"></div>
+    
+    
+    <?!= include("breaks-js");  ?>
+    </div>
+  </body>
+</html>
+
+
